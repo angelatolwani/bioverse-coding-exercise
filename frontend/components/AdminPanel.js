@@ -7,7 +7,7 @@ export default function AdminPanel() {
 
   useEffect(() => {
     async function fetchUsers() {
-      const response = await fetch('http://localhost:3001/api/users');
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users`);
       const data = await response.json();
       setUsers(data);
     }
@@ -15,7 +15,7 @@ export default function AdminPanel() {
   }, []);
 
   const handleUserClick = async (userId) => {
-    const response = await fetch(`http://localhost:3001/api/user/${userId}/answers`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user/${userId}/answers`);
     const data = await response.json();
     setSelectedUser(userId);
     setUserAnswers(data);

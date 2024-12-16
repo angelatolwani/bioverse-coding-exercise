@@ -7,7 +7,7 @@ export default function QuestionnaireSelection() {
 
   useEffect(() => {
     async function fetchQuestionnaires() {
-      const response = await fetch('http://localhost:3001/api/questionnaires');
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/questionnaires`);
       const data = await response.json();
       setQuestionnaires(data);
     }

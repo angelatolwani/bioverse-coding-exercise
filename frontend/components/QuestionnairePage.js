@@ -9,7 +9,7 @@ export default function QuestionnairePage() {
 
   useEffect(() => {
     async function fetchQuestions() {
-      const response = await fetch(`http://localhost:3001/api/questionnaire/${id}/questions`);
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/questionnaire/${id}/questions`);
       const data = await response.json();
       setQuestions(data);
     }
@@ -19,7 +19,7 @@ export default function QuestionnairePage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = JSON.parse(localStorage.getItem('user'));
-    const response = await fetch('http://localhost:3001/api/submit-answers', {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/submit-answers`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
